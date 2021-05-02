@@ -295,7 +295,7 @@ where
 /// value. It should be stored in a local variable or temporary and
 /// iterated.
 ///
-/// See [`.group_by()`](../trait.Itertools.html#method.group_by) for more information.
+/// See [`.group_by()`](crate::Itertools::group_by) for more information.
 #[must_use = "iterator adaptors are lazy and do nothing unless consumed"]
 pub struct GroupBy<K, I, F>
 where
@@ -398,7 +398,7 @@ where
 /// Iterator element type is `(K, Group)`:
 /// the group's key `K` and the group's iterator.
 ///
-/// See [`.group_by()`](../trait.Itertools.html#method.group_by) for more information.
+/// See [`.group_by()`](crate::Itertools::group_by) for more information.
 #[must_use = "iterator adaptors are lazy and do nothing unless consumed"]
 pub struct Groups<K, I, F, D: Deref<Target = GroupBy<K, I, F>>>
 where
@@ -511,7 +511,7 @@ where
 ///
 /// Iterator element type is `Chunk`, each chunk's iterator.
 ///
-/// See [`.chunks()`](../trait.Itertools.html#method.chunks) for more information.
+/// See [`.chunks()`](crate::Itertools::chunks) for more information.
 #[must_use = "iterator adaptors are lazy and do nothing unless consumed"]
 pub struct IntoChunks<I>
 where
@@ -580,7 +580,7 @@ where
 ///
 /// Iterator element type is `Chunk`.
 ///
-/// See [`.chunks()`](../trait.Itertools.html#method.chunks) for more information.
+/// See [`.chunks()`](crate::Itertools::chunks) for more information.
 #[must_use = "iterator adaptors are lazy and do nothing unless consumed"]
 pub struct Chunks<I, D>
 where

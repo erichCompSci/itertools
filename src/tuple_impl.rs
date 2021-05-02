@@ -19,8 +19,8 @@ impl<T: TupleCollect> HomogeneousTuple for T {}
 
 /// An iterator over a incomplete tuple.
 ///
-/// See [`.tuples()`](../trait.Itertools.html#method.tuples) and
-/// [`Tuples::into_buffer()`](struct.Tuples.html#method.into_buffer).
+/// See [`.tuples()`](crate::Itertools::tuples) and
+/// [`Tuples::into_buffer()`].
 #[derive(Clone, Debug)]
 pub struct TupleBuffer<T>
     where T: HomogeneousTuple
@@ -75,7 +75,7 @@ impl<T> ExactSizeIterator for TupleBuffer<T>
 
 /// An iterator that groups the items in tuples of a specific size.
 ///
-/// See [`.tuples()`](../trait.Itertools.html#method.tuples) for more information.
+/// See [`.tuples()`](crate::Itertools::tuples) for more information.
 #[derive(Clone)]
 #[must_use = "iterator adaptors are lazy and do nothing unless consumed"]
 pub struct Tuples<I, T>
@@ -130,7 +130,7 @@ impl<I, T> Tuples<I, T>
 
 /// An iterator over all contiguous windows that produces tuples of a specific size.
 ///
-/// See [`.tuple_windows()`](../trait.Itertools.html#method.tuple_windows) for more
+/// See [`.tuple_windows()`](crate::Itertools::tuple_windows) for more
 /// information.
 #[must_use = "iterator adaptors are lazy and do nothing unless consumed"]
 #[derive(Clone, Debug)]
@@ -191,7 +191,7 @@ impl<I, T> Iterator for TupleWindows<I, T>
 /// window would otherwise exceed the length of the iterator, producing tuples
 /// of a specific size.
 ///
-/// See [`.circular_tuple_windows()`](../trait.Itertools.html#method.circular_tuple_windows) for more
+/// See [`.circular_tuple_windows()`](crate::Itertools::circular_tuple_windows) for more
 /// information.
 #[must_use = "iterator adaptors are lazy and do nothing unless consumed"]
 #[derive(Debug)]
@@ -247,9 +247,6 @@ pub trait TupleCollect: Sized {
 macro_rules! count_ident{
     () => {0};
     ($i0:ident, $($i:ident,)*) => {1 + count_ident!($($i,)*)};
-}
-macro_rules! ignore_ident{
-    ($id:ident, $($t:tt)*) => {$($t)*};
 }
 macro_rules! rev_for_each_ident{
     ($m:ident, ) => {};
@@ -317,7 +314,7 @@ macro_rules! impl_tuple_collect {
                 let &mut ($(ref mut $Y),*,) = self;
                 macro_rules! replace_item{($i:ident) => {
                     item = replace($i, item);
-                }};
+                }}
                 rev_for_each_ident!(replace_item, $($Y,)*);
                 drop(item);
             }
